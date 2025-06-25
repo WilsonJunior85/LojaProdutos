@@ -1,0 +1,67 @@
+﻿@using LojaProdutos.Models
+
+@model List<ProdutoModel>
+
+
+    <div class="container mt-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+           <h2>Listagem de Produtos</h2>
+           <a class="btn btn-success" asp-action="Cadastrar" asp-controller="Produto"><i class="icon-link bi-plus-circle"></i> Cadastrar novo produto</a>
+
+        </div>
+
+        <table class="table table-hover table-bordered">
+        <thead class="table-dark h-100">
+                <tr>
+                    <th></th>
+                    <th>Nome</th>
+                    <th>Marca</th>
+                    <th>Categoria</th>
+                    <th>Quantidade</th>
+                    <th>Valor</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            @if(Model.Count() > 0)
+            {
+                @foreach(var produto in Model)
+                {
+                    <tr>
+                        @if(produto.Foto != null)
+                        {
+                            <td><img  src="..." /></td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+
+
+                        <td>@produto.Nome</td>
+                        <td>@produto.Marca</td>
+                        <td>@produto.Categoria.Nome</td>
+                        <td>@produto.QuantidadeEstoque</td>
+                        <td>R$ @produto.Valor.ToString("F")</td>
+
+                        <td>
+                            <a class="btn btn-info"><i class="bi bi-pencil"></i> Editar</a>
+                            <a class="btn btn-danger"><i class="bi bi-trash"></i> Remover</a>
+                        </td>
+
+                    </tr>
+                }
+            }
+
+
+            </tbody>
+
+        </table>
+
+
+
+
+    </div>
