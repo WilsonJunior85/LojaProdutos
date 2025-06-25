@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "t9TWcrpExSW1nl4snGquaM8FceLGHtND5jnjDJkRoXA=",
+  "Hash": "ZotTFJqWIzN260C2CC2ZT0u98lgAMlvNaieFOIvPesk=",
   "Source": "LojaProdutos",
   "BasePath": "_content/LojaProdutos",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\Superadmin\\Documents\\CURSOS\\LojaProdutos\\LojaProdutos\\wwwroot\\css\\YETI.css",
+      "SourceId": "LojaProdutos",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Superadmin\\Documents\\CURSOS\\LojaProdutos\\LojaProdutos\\wwwroot\\",
+      "BasePath": "_content/LojaProdutos",
+      "RelativePath": "css/YETI.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\YETI.css"
     },
     {
       "Identity": "C:\\Users\\Superadmin\\Documents\\CURSOS\\LojaProdutos\\LojaProdutos\\wwwroot\\favicon.ico",

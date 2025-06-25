@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\LojaProdutos.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Superadmin\\Documents\\CURSOS\\LojaProdutos\\LojaProdutos\\wwwroot\\css\\YETI.css",
+      "PackagePath": "staticwebassets\\css\\YETI.css"
+    },
+    {
       "Id": "C:\\Users\\Superadmin\\Documents\\CURSOS\\LojaProdutos\\LojaProdutos\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
