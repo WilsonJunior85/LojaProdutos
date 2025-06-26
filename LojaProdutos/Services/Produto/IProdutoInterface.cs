@@ -1,4 +1,5 @@
-﻿using LojaProdutos.Models;
+﻿using LojaProdutos.Dto.Produto;
+using LojaProdutos.Models;
 
 namespace LojaProdutos.Services.Produto
 {
@@ -7,6 +8,8 @@ namespace LojaProdutos.Services.Produto
         //retorno do metodo - nome - parametros
 
         Task<List<ProdutoModel>> BuscarProdutos();
+
+        Task<ProdutoModel> Cadastrar(CriarProdutoDto criarProdutoDto, IFormFile foto);
         
     }
 }
