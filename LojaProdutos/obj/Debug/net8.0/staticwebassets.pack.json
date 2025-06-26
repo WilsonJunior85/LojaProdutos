@@ -17,6 +17,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Superadmin\\Documents\\CURSOS\\LojaProdutos\\LojaProdutos\\wwwroot\\imagem\\photo_2025-06-25_17-58-25.png",
+      "PackagePath": "staticwebassets\\imagem\\photo_2025-06-25_17-58-25.png"
+    },
+    {
+      "Id": "C:\\Users\\Superadmin\\Documents\\CURSOS\\LojaProdutos\\LojaProdutos\\wwwroot\\imagem\\png-transparent-pair-of-black-leather-dress-shoes-art-dress-shoe-black-men-shoes-leather-fashion-outdoor-shoe-thumbnail.pngf6aa7a42-5c9a-43f5-9b60-e43b9c7e6d86.png",
+      "PackagePath": "staticwebassets\\imagem\\png-transparent-pair-of-black-leather-dress-shoes-art-dress-shoe-black-men-shoes-leather-fashion-outdoor-shoe-thumbnail.pngf6aa7a42-5c9a-43f5-9b60-e43b9c7e6d86.png"
+    },
+    {
       "Id": "C:\\Users\\Superadmin\\Documents\\CURSOS\\LojaProdutos\\LojaProdutos\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

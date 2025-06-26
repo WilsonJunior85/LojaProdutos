@@ -1,4 +1,5 @@
-﻿using LojaProdutos.Services.Categoria;
+﻿using LojaProdutos.Dto.Produto;
+using LojaProdutos.Services.Categoria;
 using LojaProdutos.Services.Produto;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,5 +33,19 @@ namespace LojaProdutos.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> Cadastrar(CriarProdutoDto criarProdutoDto, IFormFile foto)
+        {
+            if (ModelState.IsValid)
+            {
+                var produto = await _produtoInterface.Cadastrar(criarProdutoDto, foto);
+                return RedirectToAction("Index","Produto");
+            }
+            else
+            {
+                ViewBag.Categorias = await _categoriaInterface.BuscarCategorias();
+                return View(criarProdutoDto);
+            }
+        }
     }
 }
