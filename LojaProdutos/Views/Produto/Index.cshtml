@@ -48,7 +48,7 @@
                         <td>R$ @produto.Valor.ToString("F")</td>
 
                         <td>
-                            <a class="btn btn-info"><i class="bi bi-pencil"></i> Editar</a>
+                            <a asp-action="Editar" asp-controller="Produto" asp-route-id="@produto.Id" class="btn btn-info"><i class="bi bi-pencil"></i> Editar</a>
                             <a class="btn btn-danger"><i class="bi bi-trash"></i> Remover</a>
                         </td>
 
