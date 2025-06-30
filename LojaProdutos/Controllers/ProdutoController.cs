@@ -33,6 +33,28 @@ namespace LojaProdutos.Controllers
         }
 
 
+        public async Task<IActionResult> Editar(int id)
+        {
+            var produto = await _produtoInterface.BuscarProdutoPorId(id);
+
+            var editarProdutoDto = new EditarProdutoDto
+            {
+                Nome = produto.Nome,
+                Marca = produto.Marca,
+                Foto = produto.Foto,
+                Valor = produto.Valor,
+                QuantidadeEstoque = produto.QuantidadeEstoque,
+                CategoriaModelId = produto.CategoriaModelId,
+            };
+
+            ViewBag.Categorias = await _categoriaInterface.BuscarCategorias();
+            return View(editarProdutoDto);
+        }
+
+
+
+
+
         [HttpPost]
         public async Task<IActionResult> Cadastrar(CriarProdutoDto criarProdutoDto, IFormFile foto)
         {
@@ -47,5 +69,25 @@ namespace LojaProdutos.Controllers
                 return View(criarProdutoDto);
             }
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Editar(EditarProdutoDto editarProdutoDto, IFormFile? foto)
+        {
+            if (ModelState.IsValid)
+            {
+                var produto = await _produtoInterface.Editar(editarProdutoDto, foto);
+                return RedirectToAction("Index","Produto");
+            }
+            else
+            {
+                ViewBag.Categorias = await _categoriaInterface.BuscarCategorias();
+                return View(editarProdutoDto);
+            }
+        }
+
+
+
+
     }
 }

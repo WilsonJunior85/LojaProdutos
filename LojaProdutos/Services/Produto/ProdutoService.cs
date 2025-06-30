@@ -20,6 +20,22 @@ namespace LojaProdutos.Services.Produto
 
 
 
+        public async Task<ProdutoModel> BuscarProdutoPorId(int id)
+        {
+            try
+            {
+                var produto = await _context.Produtos.Include(x => x.Categoria).FirstOrDefaultAsync(p => p.Id == id);
+                return produto;
+            }
+            catch (Exception ex) 
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+
+
 
         public async Task<List<ProdutoModel>> BuscarProdutos()
         {
@@ -73,6 +89,7 @@ namespace LojaProdutos.Services.Produto
             }
         }
 
+
         private string GeraCaminhoArquivo(IFormFile foto) 
         { 
             var codigoUnico = Guid.NewGuid().ToString(); // vai gera um identificador único          
@@ -96,7 +113,47 @@ namespace LojaProdutos.Services.Produto
 
 
 
+        public async Task<ProdutoModel> Editar(EditarProdutoDto editarProdutoDto, IFormFile? foto)
+        {
+            try
+            {
 
+                var produto = await BuscarProdutoPorId(editarProdutoDto.Id);
+                var nomeCaminhoImagem = "";
+                if (foto != null)
+                {
+                    string caminhoCapaExistente = _sistema + "\\imagem\\" + produto.Foto;
+                    if (File.Exists(caminhoCapaExistente)) 
+                    { 
+                       File.Delete(caminhoCapaExistente);
+                    }
+
+                    nomeCaminhoImagem = GeraCaminhoArquivo(foto);
+                }
+
+
+                
+                    produto.Nome = editarProdutoDto.Nome;
+                    produto.Marca = editarProdutoDto.Marca;
+                    produto.Valor = editarProdutoDto.Valor;
+                    produto.QuantidadeEstoque = editarProdutoDto.QuantidadeEstoque;
+                    produto.CategoriaModelId = editarProdutoDto.CategoriaModelId;
+                
+                    if(nomeCaminhoImagem != "")
+                    {
+                      produto.Foto = nomeCaminhoImagem;
+                    }
+                    
+                     _context.Update(produto);
+                     await _context.SaveChangesAsync();
+
+                     return produto;
+
+            } catch (Exception ex) 
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
 
 
