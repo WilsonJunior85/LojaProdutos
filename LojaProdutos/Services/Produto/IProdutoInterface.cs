@@ -16,5 +16,7 @@ namespace LojaProdutos.Services.Produto
 
         Task<ProdutoModel> Editar(EditarProdutoDto editarProdutoDto, IFormFile? foto);
 
+        Task<ProdutoModel> Remover(int id);
+
     }
 }
