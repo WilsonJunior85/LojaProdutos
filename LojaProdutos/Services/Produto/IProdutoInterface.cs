@@ -18,5 +18,7 @@ namespace LojaProdutos.Services.Produto
 
         Task<ProdutoModel> Remover(int id);
 
+        Task<List<ProdutoModel>> BuscarProdutoFilro(string? pesquisar);
+
     }
 }
