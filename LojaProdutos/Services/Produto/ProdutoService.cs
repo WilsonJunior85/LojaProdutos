@@ -171,6 +171,23 @@ namespace LojaProdutos.Services.Produto
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<List<ProdutoModel>> BuscarProdutoFilro(string? pesquisar)
+        {
+            try
+            {
+                var produtos = await _context.Produtos // Entrei dentro do banco e depois dentro da tabela de produtos
+                    .Include(x => x.Categoria)         // Fiz um include com a tebela de categoria
+                    .Where(p => p.Nome.Contains(pesquisar) || p.Marca.Contains(pesquisar)) // Para cada produto que eu estou passando dentro da tabela de produto, eu quero que a coluna de "Nome" contenha o que tem dentro do meu "pesquisar".
+                    .ToListAsync(); // Transformando em uma lista e retornando para dentro da minha variável "produtos"
+
+                return produtos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 
 }
