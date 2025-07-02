@@ -2,6 +2,21 @@
 @model EditarProdutoDto
 
 
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success text-dark" role="alert">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger text-dark" role="alert">
+        @TempData["MensagemErro"]
+    </div>
+}
+
+
 <div class="container mt-5">
     <form asp-action="Editar" asp-controller="Produto" method="post" enctype="multipart/form-data">
 
@@ -19,32 +34,32 @@
         <div class="mb-1 mt-3">
             <label class="form-label">Nome:</label>
             <input class="form-control shadow-none" type="text" asp-for="Nome" />
-            <span asp-validation-for="Nome"></span>
+            <span asp-validation-for="Nome" class="text-danger"></span>
         </div>
 
         <div class="mb-1 mt-3">
             <label class="form-label">Marca:</label>
             <input class="form-control shadow-none" type="text" asp-for="Marca" />
-            <span asp-validation-for="Marca"></span>
+            <span asp-validation-for="Marca" class="text-danger"></span>
         </div>
 
         <div class="mb-1 mt-3">
             <label class="form-label">Valor:</label>
             <input class="form-control shadow-none" type="number" min="1" step="any" asp-for="Valor" />
-            <span asp-validation-for="Valor"></span>
+            <span asp-validation-for="Valor" class="text-danger"></span>
         </div>
 
         <div class="mb-1 mt-3">
             <label class="form-label">Quantidade:</label>
             <input class="form-control shadow-none" type="number" min="1" step="any" asp-for="QuantidadeEstoque" />
-            <span asp-validation-for="QuantidadeEstoque"></span>
+            <span asp-validation-for="QuantidadeEstoque" class="text-danger"></span>
         </div>
 
         <div class="mb-1 mt-3">
             <label class="form-label">Categoria:</label>
             <select asp-for="CategoriaModelId" class="form-select" asp-items="@(new SelectList(ViewBag.Categorias,"Id","Nome", Model.CategoriaModelId))">
             </select>
-            <span asp-validation-for="CategoriaModelId"></span>
+            <span asp-validation-for="CategoriaModelId" class="text-danger"></span>
 
             <div class="d-flex mt-3">
                 <button type="submit" class="btn btn-success w-50 mx-1"><i class="bi bi-plus-circle"></i> Editar</button>
