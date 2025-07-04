@@ -100,6 +100,11 @@ namespace LojaProdutos.Controllers
         }
 
 
+        public async Task<IActionResult> Detalhes(int id)
+        {
+            var produto = await _produtoInterface.BuscarProdutoPorId(id);
+            return View(produto);
+        }
 
 
     }
