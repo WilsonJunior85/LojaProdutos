@@ -20,7 +20,7 @@
 
     <div class="container mt-5">
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex justify-content-between align-items-center mb-5">
            <h2>Listagem de Produtos</h2>
            <a class="btn btn-success" asp-action="Cadastrar" asp-controller="Produto"><i class="icon-link bi-plus-circle"></i> Cadastrar novo produto</a>
 
@@ -35,7 +35,7 @@
                     <th>Categoria</th>
                     <th>Quantidade</th>
                     <th>Valor</th>
-                    <th></th>
+                    <th>Editar/Remover</th>
                 </tr>
             </thead>
 
@@ -59,8 +59,8 @@
                         <td>@produto.Nome</td>
                         <td>@produto.Marca</td>
                         <td>@produto.Categoria.Nome</td>
-                        <td>@produto.QuantidadeEstoque</td>
-                        <td>R$ @produto.Valor.ToString("F")</td>
+                        <td class="text-start">@produto.QuantidadeEstoque</td>
+                        <td class="text-start">R$ @produto.Valor.ToString("F")</td>
 
                         <td>
                             <a asp-action="Editar" asp-controller="Produto" asp-route-id="@produto.Id" class="btn btn-info"><i class="bi bi-pencil"></i> Editar</a>
