@@ -17,7 +17,8 @@ namespace LojaProdutos.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var registros = _estoqueInterface.listagemRegistros();
+            return View(registros);
         }
 
 
