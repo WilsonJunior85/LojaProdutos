@@ -13,7 +13,9 @@ Onde consegue:
 - Paginação nas telas
 - Simular uma compra desses produtos
 - Importar imagens
+- Sistema de login
 - Cadastro de  usuários
+- Listar Usuários
 - Autenticação (Autenticação como cliente ou como administrador)
 - Criptografia de senhas
   
