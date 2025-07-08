@@ -13,7 +13,7 @@ Onde consegue:
 - Paginação nas telas
 - Simular uma compra desses produtos
 - Importar imagens
-- Temos usuários
+- Cadastro de  usuários
 - Autenticação (Autenticação como cliente ou como administrador)
 - Criptografia de senhas
   
