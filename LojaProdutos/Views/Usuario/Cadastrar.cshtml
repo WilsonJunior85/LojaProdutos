@@ -30,7 +30,7 @@
             @* Campos de CEP e Estado *@
             <div class="mb-1 col-6 mt-2">
                 <label class="form-label">CEP:</label>
-                <input type="text" class="form-control shadow-none" id="input-cep" asp-for="CEP" />
+                <input type="text" class="form-control shadow-none" id="input-cep" asp-for="CEP" autocomplete="off" />
             </div>
 
             <div class="mb-1 col-6 mt-2">
@@ -83,4 +83,32 @@
             <a class="btn btn-info w-50" asp-controller="Usuario" asp-action="Index">Voltar</a>
         </div>
     </form>
+
 </div>
+
+                                 @* Funcionalidades de buscar CEP *@
+
+   @* Buscar o jQuery no site: https://releases.jquery.com/ em jQuery 3.x clicar em uncompressed e copiar o script *@
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<script>
+
+    var inpulogradouro = document.querySelector('#input-logradouro');
+    var inputBairro = document.querySelector('#input-bairro');
+    var inputEstado = document.querySelector('#input-estado');
+    var inputComplemento = document.querySelector('#input-complemento');
+
+    $('#input-cep').focusout(async function (e){
+        var target = e.target;
+        var value = target.value;
+        // Pegar o cep no https://viacep.com.br/ e altera o padrao
+        var url = `https://viacep.com.br/ws/${value}/json/`;
+        var resposta = await fetch(url);
+        var dados = await resposta.json();
+        
+        inpulogradouro.value = dados.logradouro;
+        inputBairro.value = dados.bairro;
+        inputEstado.value = dados.estado;
+        inputComplemento.value = dados.complemento;
+    })
+</script>
