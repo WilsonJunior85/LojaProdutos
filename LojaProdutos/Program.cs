@@ -26,6 +26,8 @@ builder.Services.AddScoped<IUsuarioInterface, UsuarioService>();
 builder.Services.AddScoped<IAutenticacaoInterface, AutenticacaoService>();
 
 
+//Implementando o Mapper
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
