@@ -3,6 +3,7 @@ using DocumentFormat.OpenXml.Office2010.Excel;
 using LojaProdutos.Dto.Endereco;
 using LojaProdutos.Dto.Produto;
 using LojaProdutos.Dto.Usuario;
+using LojaProdutos.Filtros;
 using LojaProdutos.Services.Categoria;
 using LojaProdutos.Services.Produto;
 using LojaProdutos.Services.Usuario;
@@ -10,6 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LojaProdutos.Controllers
 {
+    [FiltroUsuarioLogado]
+    [FiltroUsuarioLogadoAdm]
+
     public class UsuarioController : Controller
     {
         private readonly IUsuarioInterface _usuarioInterface;

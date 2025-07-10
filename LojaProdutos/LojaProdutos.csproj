@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Shared\_LayoutDeslogado.cshtml" />
     <Content Remove="Views\Usuario\Cadastrar.cshtml" />
   </ItemGroup>
 
@@ -32,11 +33,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Shared\_LayoutDeslogado.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Usuario\Cadastrar.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Shared\_LayoutDeslogado.cshtml" />
     <None Include="Views\Usuario\Cadastrar.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\_LayoutDeslogado.cshtml" />
   </ItemGroup>
 
 </Project>
