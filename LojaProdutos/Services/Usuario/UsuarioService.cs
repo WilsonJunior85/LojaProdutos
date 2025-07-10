@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using LojaProdutos.Data;
+using LojaProdutos.Dto.Login;
 using LojaProdutos.Dto.Produto;
 using LojaProdutos.Dto.Usuario;
 using LojaProdutos.Models;
 using LojaProdutos.Services.Autenticacao;
+using LojaProdutos.Services.Sessao;
 using Microsoft.EntityFrameworkCore;
 
 namespace LojaProdutos.Services.Usuario
@@ -13,12 +15,14 @@ namespace LojaProdutos.Services.Usuario
         private readonly DataContext _context;
         private readonly IAutenticacaoInterface _autenticacaoInterface;
         private readonly IMapper _mapper;
+        private readonly ISessaoInterface _sessaoInterface;
 
-        public UsuarioService(DataContext context, IAutenticacaoInterface autenticacaoInterface, IMapper mapper)
+        public UsuarioService(DataContext context, IAutenticacaoInterface autenticacaoInterface, IMapper mapper, ISessaoInterface sessaoInterface)
         {
             _context = context;
             _autenticacaoInterface = autenticacaoInterface;
             _mapper = mapper;
+            _sessaoInterface = sessaoInterface;
         }
 
         
@@ -101,9 +105,7 @@ namespace LojaProdutos.Services.Usuario
         {
             try
             {
-
                 var usuarioBanco = await _context.Usuarios.Include(e => e.Endereco).FirstOrDefaultAsync(u => u.Id == editarUsuarioDto.Id);
-
 
                 usuarioBanco.Nome = editarUsuarioDto.Nome;
                 usuarioBanco.Cargo = editarUsuarioDto.Cargo;
@@ -112,7 +114,6 @@ namespace LojaProdutos.Services.Usuario
                 usuarioBanco.Endereco = _mapper.Map<EnderecoModel>(editarUsuarioDto.Endereco);
 
                 
-
                 _context.Update(usuarioBanco);
                 await _context.SaveChangesAsync();
 
@@ -126,6 +127,37 @@ namespace LojaProdutos.Services.Usuario
         }
 
 
+
+        public async Task<UsuarioModel> Login(LoginUsuarioDto loginUsuarioDto)
+        {
+            try
+            {
+                var usuarioBanco = await _context.Usuarios.FirstOrDefaultAsync(e => e.Email == loginUsuarioDto.Email);
+
+                //Fazendo a verificação se as credencias estão inválidas ou válidas
+                if(usuarioBanco == null)
+                {
+                    return null; 
+                }
+
+                if (!_autenticacaoInterface.VerificaLogin(loginUsuarioDto.Senha, usuarioBanco.SenhaHash, usuarioBanco.SenhaSalt))
+                {
+                    return null;
+                }
+
+                //Criando a sessão de usuário
+                _sessaoInterface.CriarSessao(usuarioBanco);
+
+                return usuarioBanco;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        
 
         public async Task<bool> VerificaSeExisteEmail(CriarUsuarioDto criarUsuarioDto)
         {
