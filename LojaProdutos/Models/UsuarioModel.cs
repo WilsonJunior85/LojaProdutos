@@ -1,5 +1,6 @@
 ﻿using LojaProdutos.Enums;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.Text.Json.Serialization;
 
 namespace LojaProdutos.Models
 {
@@ -17,7 +18,8 @@ namespace LojaProdutos.Models
         //Um usuário pode ter um endereço entao vamos relacionar as tabelas
 
         [ValidateNever]
-        public EnderecoModel Endereco { get; set; }
+        
+        public EnderecoModel Endereco { get; set; } = new EnderecoModel();
 
     }
 }
